@@ -1,12 +1,12 @@
 //DEPENDENCIES
 const express = require('express');
-const productsRouter = express.Router();
+const reviewsRouter = express.Router();
 const Product = require('../models/product')
 
 // ROUTES
 // SEED
-const productSeed = require('../models/productSeed');
-productsRouter.get('/productseed', (req, res) => {
+const reviewSeed = require('../models/reviewSeed');
+reviewsRouter.get('/reviewseed', (req, res) => {
     Product.deleteMany({}, (error, allProducts) => {});
 
     Product.create(productSeed, (error, data) => {
@@ -15,7 +15,7 @@ productsRouter.get('/productseed', (req, res) => {
 });
 // I N D U C E S
 // INDEX
-productsRouter.get('/', (req, res) => {
+reviewsRouter.get('/', (req, res) => {
 	Product.find({}, (error, foundProducts) => {
 		res.render('index.ejs', {
 			products: foundProducts,
@@ -23,18 +23,18 @@ productsRouter.get('/', (req, res) => {
 	});
 });
 // NEW
-productsRouter.get('/new', (req, res) => {
+reviewsRouter.get('/new', (req, res) => {
 	res.render('new.ejs');
 });
 // DELETE
-productsRouter.delete('/:id', (req, res) => {
+reviewsRouter.delete('/:id', (req, res) => {
     Product.findByIdAndDelete(req.params.id, (err, data) => {
         res.redirect('/store');
     });
 });
 
 // UPDATE
-productsRouter.put('/:id', (req,res)=>{
+reviewsRouter.put('/:id', (req,res)=>{
     Product.findByIdAndUpdate(req.params.id, req.body, ()=>{
         res.redirect(`/store`);
     })
@@ -43,7 +43,7 @@ productsRouter.put('/:id', (req,res)=>{
 // CREATE
 
 
-productsRouter.post('/', (req, res) => {
+reviewsRouter.post('/', (req, res) => {
     
     Product.create(req.body, (error, createdProduct) => {
         
@@ -55,7 +55,7 @@ productsRouter.post('/', (req, res) => {
 
 
 // EDIT
-productsRouter.get('/:id/edit', (req, res) => {
+reviewsRouter.get('/:id/edit', (req, res) => {
     Product.findById(req.params.id, (error, foundProduct) => {
         console.log(foundProduct)
         res.render('edit.ejs', {
@@ -66,7 +66,7 @@ productsRouter.get('/:id/edit', (req, res) => {
 });
 
 // SHOW
-productsRouter.get('/:id', (req, res) => {
+reviewsRouter.get('/:id', (req, res) => {
     Product.findById(req.params.id, (err, foundProduct) => {
         res.render('show.ejs', {
             product: foundProduct,
@@ -75,4 +75,4 @@ productsRouter.get('/:id', (req, res) => {
 });
 
 // EXPORTS
-module.exports = productsRouter;
+module.exports = reviewsRouter;
