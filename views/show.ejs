@@ -40,6 +40,8 @@
     </ul>
     <h2>Reviews</h2>
     <form id="add-review-form" method="POST" action="/store/<%= product._id %>/reviews">
+        <label>Username:</label>
+        <input type="text" name="user"></input>
         <label>Review:</label>
         <textarea name="content"></textarea>
         <label>Rating:</label>
@@ -53,18 +55,52 @@
         </select>
         <input type="submit" value="Add Review">
     </form>
-    <nav>
-        <!-- <% if (product.qty <= 0) { %>
+
+    <% if (product.reviews.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ultra Rare Customer</th>
+                    <th>Date</th>
+                    <th>Review</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% product.reviews.forEach(function(rev) { %>
+                    <tr>
+                        <td>
+                            <%= rev.user %>
+                        </td>
+                        <td>
+                            <%= rev.createdAt.toLocaleDateString() %>
+                        </td>
+                        <td>
+                            <%= rev.content %>
+                        </td>
+                        <td>
+                            <%= rev.rating %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+            <h5>No Reviews Yet</h5>
+            <% } %>
+
+                <nav>
+                    <!-- <% if (product.qty <= 0) { %>
             <h3>This item is currently out of stock. Come by later!</h3>
             <% } %>
             <% if (product.qty > 0) { %>
         <form action="<%= product.qty -=1; %> ">
             <input type="submit" value="Purchase">
         </form> -->
-        <% } %>
-            <a href="/store/<%=product._id %>/edit">Something wrong? Edit!</a>
+                    <% } %>
+                        <a href="/store/<%=product._id %>/edit">Something wrong? Edit!</a>
 
-    </nav>
+                </nav>
 </body>
 
 </html>

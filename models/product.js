@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
-
+const Schema = mongoose.Schema;
 //REVIEW SCHEMA
 const reviewSchema = new mongoose.Schema({
-  title: String,
-  author: String,
-  body: String,
-  verifiedUser: Boolean
-})
+  user: String,
+  content: String,
+  rating: {type: Number, min: 1, max: 5, default: 5}
+ }, {
+  timestamps: true
+ });
 //PRODUCT SCHEMA
 const productSchema = new mongoose.Schema({
 
