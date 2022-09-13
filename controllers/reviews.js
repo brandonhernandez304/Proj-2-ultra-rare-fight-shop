@@ -2,7 +2,10 @@
 const express = require('express');
 const reviewsRouter = express.Router();
 const Product = require('../models/product')
-
+reviewsRouter.post('/store/:id/reviews', create)
+module.exports = {
+    create
+};
 // ROUTES
 // SEED
 const reviewSeed = require('../models/reviewSeed');
@@ -42,7 +45,14 @@ reviewsRouter.put('/:id', (req,res)=>{
 
 // CREATE
 
-
+function create(req,res){
+    Product.findById(req.params.id, function(err, product){
+        product.reviews.push(req.body);
+        product.save(function(err){
+            res.redirect(`/store/${product._id}`);
+        });
+    });
+}
 reviewsRouter.post('/', (req, res) => {
     
     Product.create(req.body, (error, createdProduct) => {
