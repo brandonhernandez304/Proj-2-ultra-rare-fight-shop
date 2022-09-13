@@ -20,3 +20,4 @@ module.exports = [{
     body: bodyLorem,
     verifiedUser: true
 }]
+

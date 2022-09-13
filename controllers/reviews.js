@@ -7,18 +7,18 @@ const Product = require('../models/product')
 // SEED
 const reviewSeed = require('../models/reviewSeed');
 reviewsRouter.get('/reviewseed', (req, res) => {
-    Product.deleteMany({}, (error, allProducts) => {});
+    Review.deleteMany({}, (error, allReviews) => {});
 
-    Product.create(productSeed, (error, data) => {
+    Review.create(reviewSeed, (error, data) => {
         res.redirect('/store');
     });
 });
 // I N D U C E S
 // INDEX
 reviewsRouter.get('/', (req, res) => {
-	Product.find({}, (error, foundProducts) => {
+	Review.find({}, (error, foundReviews) => {
 		res.render('index.ejs', {
-			products: foundProducts,
+			reviews: foundReviews,
 		});
 	});
 });
