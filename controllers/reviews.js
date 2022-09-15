@@ -3,19 +3,21 @@ const express = require('express');
 const reviewsRouter = express.Router();
 const Product = require('../models/product')
 reviewsRouter.post('/store/:id/reviews', create)
+const reviewDoc = Product.reviews;
+
 module.exports = {
     create
 };
 // ROUTES
 // SEED
-const reviewSeed = require('../models/reviewSeed');
-reviewsRouter.get('/reviewseed', (req, res) => {
-    Review.deleteMany({}, (error, allReviews) => {});
+// const reviewSeed = require('../models/reviewSeed');
+// reviewsRouter.get('/reviewseed', (req, res) => {
+//     Review.deleteMany({}, (error, allReviews) => {});
 
-    Review.create(reviewSeed, (error, data) => {
-        res.redirect('/store');
-    });
-});
+//     Review.create(reviewSeed, (error, data) => {
+//         res.redirect('/store');
+//     });
+// });
 // I N D U C E S
 // INDEX
 reviewsRouter.get('/', (req, res) => {
@@ -32,6 +34,7 @@ reviewsRouter.get('/new', (req, res) => {
 // DELETE
 reviewsRouter.delete('/:id', (req, res) => {
     Product.findByIdAndDelete(req.params.id, (err, data) => {
+        reviewDoc.reviews[0].remove();//try .delete
         res.redirect('/store');
     });
 });

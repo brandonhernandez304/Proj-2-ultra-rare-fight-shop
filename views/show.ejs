@@ -12,95 +12,130 @@
 </head>
 
 <body>
-    <nav>
-        <a href="/store">Back to Store</a>
-    </nav>
-    <h1>
-        <%=product.name %>
-    </h1>
-    <div class="photo">
-        <img src=<%=product.img %> alt="">
+    </body>
+    
+    <header>
+        <nav>
+            <a href="/store">Back to Store</a>
+        </nav>
+    </header>
+    <div class="header"></div>
+
+    <div class="container">
+        <div class="product-info">
+            <div class="product-name"></div>
+            <div class="product-price"></div>
+            <div class="buy-button"></div>
+            <div class="product-description"></div>
+        </div>
+        <div class="footer"></div>
+        <div class="reviews"></div>
+        <div class="write-review"></div>
     </div>
-    <ul>
-        <form action="/store/<%= product._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete this item">
-        </form>
-        <li>
-            <h3>Description:</h3>
-            <%= product.description %>
-        </li>
-        <li>
-            <h3>Price:</h3>
-            $<%= product.price %>
-        </li>
-        <li>
-            <h3>Left in Stock:</h3>
-            <%= product.qty %> units
-        </li>
-    </ul>
-    <h2>Reviews</h2>
-    <form id="add-review-form" method="POST" action="/store/<%= product._id %>/reviews">
-        <label>Username:</label>
-        <input type="text" name="user"></input>
-        <label>Review:</label>
-        <textarea name="content"></textarea>
-        <label>Rating:</label>
-        <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-
-        </select>
-        <input type="submit" value="Add Review">
-    </form>
-
-    <% if (product.reviews.length) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Ultra Rare Customer</th>
-                    <th>Date</th>
-                    <th>Review</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% product.reviews.forEach(function(rev) { %>
-                    <tr>
-                        <td>
-                            <%= rev.user %>
-                        </td>
-                        <td>
-                            <%= rev.createdAt.toLocaleDateString() %>
-                        </td>
-                        <td>
-                            <%= rev.content %>
-                        </td>
-                        <td>
-                            <%= rev.rating %>
-                        </td>
+    
+</div>
+<div class="product-img">
+    <img class="product-img" src=<%=product.img %> alt="">
+</div>
+</div>
+<div class="product-info-wrap">
+    <div id="page-name">
+        <h1>
+            <%=product.name %>
+        </h1>
+    </div>
+    <div id="product-info">
+        <ul>
+            <li>
+                <h3>Description:</h3>
+                        <%= product.description %>
+                    </li>
+                    <li>
+                        <h3>Price:</h3>
+                        $<%= product.price %>
+                    </li>
+                    <li>
+                        <h3>Left in Stock:</h3>
+                        <%= product.qty %> units
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="reviews-on-show">
+                <section id="review-form">
+                    <h2>Reviews</h2>
+                    <form id="add-review-form" method="POST" action="/store/<%= product._id %>/reviews">
+                        <label>Username:</label>
+                        <input type="text" name="user"></input>
+                        <label>Review:</label>
+                        <textarea name="content"></textarea>
+                        <label>Rating:</label>
+                        <div id="rating-select">
+                            <select name="rating">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <input type="submit" value="Add Review">
+                    </form>
+                </section>
+                <section id="reviews-table">
+                    <% if (product.reviews.length) { %>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ultra Rare Customer</th>
+                                    <th>Date</th>
+                        <th>Review</th>
+                        <th>Rating</th>
                     </tr>
-                    <% }); %>
-            </tbody>
-        </table>
-        <% } else { %>
-            <h5>No Reviews Yet</h5>
-            <% } %>
-
-                <nav>
-                    <!-- <% if (product.qty <= 0) { %>
+                </thead>
+                <tbody>
+                    <% product.reviews.forEach(function(rev) { %>
+                        <tr>
+                            <td>
+                                <%= rev.user %>
+                            </td>
+                            <td>
+                                <%= rev.createdAt.toLocaleDateString() %>
+                            </td>
+                            <td>
+                                <%= rev.content %>
+                            </td>
+                            <td>
+                                <%= rev.rating %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h5>No Reviews Yet</h5>
+                    <% } %>
+                </section>
+            </div>
+</div>
+</div>
+<footer>
+    <nav>
+        <!-- <% if (product.qty <= 0) { %>
             <h3>This item is currently out of stock. Come by later!</h3>
             <% } %>
             <% if (product.qty > 0) { %>
-        <form action="<%= product.qty -=1; %> ">
-            <input type="submit" value="Purchase">
-        </form> -->
-                    <% } %>
-                        <a href="/store/<%=product._id %>/edit">Something wrong? Edit!</a>
-
-                </nav>
-</body>
-
-</html>
+                <form action="<%= product.qty -=1; %> ">
+                    <input type="submit" value="Purchase">
+                </form> -->
+                <% } %>
+                <a href="/store/<%=product._id %>/edit">Something wrong? Edit!</a>
+                <div id="delete-form">
+                    <form action="/store/<%= product._id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete this item">
+                    </form>
+            </nav>
+        </footer>
+    </body>
+    
+    </html>

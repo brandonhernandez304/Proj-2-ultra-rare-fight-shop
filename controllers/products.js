@@ -2,7 +2,6 @@
 const express = require('express');
 const productsRouter = express.Router();
 const Product = require('../models/product')
-
 // ROUTES
 // SEED
 const productSeed = require('../models/productSeed');
