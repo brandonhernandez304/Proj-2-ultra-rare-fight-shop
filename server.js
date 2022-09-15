@@ -16,6 +16,7 @@ const mongoose = require("mongoose");
 const DATABASE_URL = process.env.DATABASE_URL;
 mongoose.connect(DATABASE_URL , { useNewUrlParser: true, useUnifiedTopology: true }
     );
+    const PORT = process.env.PORT || 3030;
 //DATABASE CONFIGURATION
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
@@ -34,14 +35,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"))
 app.use(express.static("public"))
 app.use("/store", productsRouter);
-app.use('/', reviewsRouter);
+app.use('/store', reviewsRouter);
 // ROUTES
-app.get('/store', (req,res)=>{
+app.get('/', (req,res)=>{
     res.render('index.ejs')
 })
 
 // LISTENER
-const PORT = process.env.PORT;
+
 app.listen(PORT, () => {
     console.log(`The server is listening on port: ${PORT}`)
 })

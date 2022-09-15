@@ -13,141 +13,139 @@
 
 <body>
     <div class="container">
-
-    
-    <div class="header">
-        <header>
-            <nav>
-                <a href="/store">Back to Store</a>
-            </nav>
-            <div id="shop-title">
-                <h1>ULTRA-RARE FIGHT GEAR</h1>
-            </div>
-        </header>
-    </div>
-
-
-    
-    <div class="product-img">
-        <img class="photo" src=<%=product.img %> alt="">
-    </div>
-    <div class="product-info">
-    <div class="product-name">
-        <h1>
-                <%=product.name %>
-            </h1>
-    </div>
-    
-    <div id="product-ul">
-    <ul>
-        <div class="product-description">
-
-                <h3>Description:</h3>
-                <%= product.description %>
-            </li>
-        </div>
-        <div class="product-price">
-            <li>
-                <h3>Price:</h3>
-                $<%= product.price %>
-            </li>
-            
-        </div>
-        <div class="stock">
-        <li>
-            <h3>Left in Stock:</h3>
-            <%= product.qty %> units
-        </li>
-    </div>
-    </ul>
-            </div>
-</div>
-
-<div class="reviews">
-    <div class="write-review">
-        <h2>Reviews</h2>
-        <form id="add-review-form" method="POST" action="/store/<%= product._id %>/reviews">
-            <label>Username:</label>
-            <input type="text" name="user"></input>
-            <label>Review:</label>
-            <textarea name="content"></textarea>
-            <label>Rating:</label>
-            <div id="rating-select">
-                <select name="rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <input type="submit" value="Add Review">
-        </form>
         
+        <div class="header">
+            <header>
+                <nav>
+                    <a href="/store">Back to Store</a>
+                </nav>
+                <div id="shop-title">
+                    <h1>ULTRA-RARE FIGHT GEAR</h1>
+                </div>
+            </header>
+        </div>    
+        <div class="product-img">
+            <img class="photo" src=<%=product.img %> alt="">
+        </div>
+        <div class="product-info">
+        <div class="product-name">
+            <h1>
+                    <%=product.name %>
+                </h1>
+        </div>
+        
+        <div id="product-ul">
+        <ul>
+            <div class="product-price">
+                <li>
+                    <h3>Price:</h3>
+                    $<%= product.price %>
+                </li>
+                
+            </div>
+            <div class="product-description">
+    
+                    <h3>Description:</h3>
+                    <%= product.description %>
+                </li>
+            </div>
+            <div class="stock">
+            <li>
+                <h3>Left in Stock:</h3>
+                <%= product.qty %> units
+            </li>
+        </div>
+        </ul>
+                </div>
     </div>
     
-    <section id="reviews-table">
-        <% if (product.reviews.length) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ultra Rare Customer</th>
-                        <th>Date</th>
-                        <th>Review</th>
-                        <th>Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% product.reviews.forEach(function(rev) { %>
-                        <tr>
-                            <td>
-                                <%= rev.user %>
-                            </td>
-                            <td>
-                                <%= rev.createdAt.toLocaleDateString() %>
-                            </td>
-                            <td>
-                                <%= rev.content %>
-                            </td>
-                            <td>
-                                <%= rev.rating %>
-                            </td>
-                        </tr>
-                        <% }); %>
-                    </tbody>
-                </table>
-                <% } else { %>
-                    <h5>No Reviews Yet</h5>
-                    <% } %>
-                </section>
-            </div>
+    <div class="reviews">
+        <div class="write-review">
+            <h2>Reviews</h2>
+            <form id="add-review-form" method="POST" action="/store/<%= product._id %>/reviews">
+                <label>Username:</label>
+                <input type="text" name="user"></input>
+                <label>Review:</label>
+                <textarea name="content"></textarea>
+                <label>Rating:</label>
+                <div id="rating-select">
+                    <select name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <input type="submit" value="Add Review">
+            </form>
             
         </div>
-        <div class="footer">
-            <nav>
-                <!-- <% if (product.qty <= 0) { %>
-                    <h3>This item is currently out of stock. Come by later!</h3>
-                    <% } %>
-                    <% if (product.qty > 0) { %>
-                        <form action="<%= product.qty -=1; %> ">
-                            <input type="submit" value="Purchase">
-                        </form> -->
+        
+        <section id="reviews-table">
+            <% if (product.reviews.length) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ultra Rare Customer</th>
+                            <th>Date</th>
+                            <th>Review</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% product.reviews.forEach(function(rev) { %>
+                            <tr>
+                                <td>
+                                    <%= rev.user %>
+                                </td>
+                                <td>
+                                    <%= rev.createdAt.toLocaleDateString() %>
+                                </td>
+                                <td>
+                                    <%= rev.content %>
+                                </td>
+                                <td>
+                                    <%= rev.rating %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <h5>No Reviews Yet</h5>
                         <% } %>
-                        <a href="/store/<%=product._id %>/edit">Something wrong? Edit!</a>
-                        <div id="delete-form">
-                            <form action="/store/<%= product._id %>?_method=DELETE" method="POST">
-                                <input type="submit" value="Delete this item">
-                            </form>
-                        </nav>
-                    </footer>
-                    
+                    </section>
+                </div>
+                
+                <div class="footer">
+            
+                <nav>
+                    <!-- <% if (product.qty <= 0) { %>
+                        <h3>This item is currently out of stock. Come by later!</h3>
+                        <% } %>
+                        <% if (product.qty > 0) { %>
+                            <form action="<%= product.qty -=1; %> ">
+                                <input type="submit" value="Purchase">
+                            </form> -->
+                            <% } %>
+                            <a href="/store/<%=product._id %>/edit">Something wrong? Edit!</a>
+                            <div id="delete-form">
+                                <form action="/store/<%= product._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" value="Delete this item">
+                                </form>
+                            </nav>
+                        </footer>
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-</div class="container">
+    </div>
+    </div>
+    
+
 </body>
 
 </html>
