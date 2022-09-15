@@ -87,7 +87,7 @@ ul{
   flex-wrap: wrap;
   justify-content: space-around;
   border: 1px groove var(--light-red);
-  box-shadow: -2px 5px 3px blue ;
+  box-shadow: -2px 5px 3px  ;
 }
 li{
 

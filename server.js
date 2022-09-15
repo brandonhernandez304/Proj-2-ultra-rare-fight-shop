@@ -13,10 +13,10 @@ const mongoose = require("mongoose");
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
+const PORT = process.env.PORT || 3030;
 const DATABASE_URL = process.env.DATABASE_URL;
 mongoose.connect(DATABASE_URL , { useNewUrlParser: true, useUnifiedTopology: true }
     );
-    const PORT = process.env.PORT || 3030;
 //DATABASE CONFIGURATION
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
@@ -32,6 +32,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 // MIDDLEWARE  
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride("_method"))
 app.use(express.static("public"))
 app.use("/store", productsRouter);
