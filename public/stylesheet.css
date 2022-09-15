@@ -55,7 +55,11 @@
 
   /* END GRID STUFF */
 
-
+.index-container{
+  display:flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
 
 /* ETC. DECORATION */
 #shop-title{

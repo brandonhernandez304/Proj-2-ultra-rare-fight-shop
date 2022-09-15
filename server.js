@@ -36,7 +36,7 @@ app.use(express.static("public"))
 app.use("/store", productsRouter);
 app.use('/', reviewsRouter);
 // ROUTES
-app.get('/', (req,res)=>{
+app.get('/store', (req,res)=>{
     res.render('index.ejs')
 })
 
