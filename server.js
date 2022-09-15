@@ -13,10 +13,10 @@ const mongoose = require("mongoose");
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true }
+const DATABASE_URL = process.env.DATABASE_URL;
+mongoose.connect(DATABASE_URL , { useNewUrlParser: true, useUnifiedTopology: true }
     );
-DATABASE CONFIGURATION
+//DATABASE CONFIGURATION
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true

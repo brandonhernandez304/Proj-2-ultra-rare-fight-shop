@@ -58,15 +58,15 @@
 
 
 /* ETC. DECORATION */
-h1{
+#shop-title{
     align-content: center;
     text-align: center;
     background: none;
     border-bottom: 1px rgba(0, 0, 0, 0.639);
     box-shadow: -45px 10px 17px rgba(0, 0, 0, 0.639);
   }
-  .show-photo-container img{
-    width: 100%;
+  .product-img img{
+    width: 75%;
     border-radius: 15px;
     box-shadow: 20px 20px 10px rgba(221, 221, 221, 0.366);
   }
