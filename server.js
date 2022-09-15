@@ -38,12 +38,10 @@ app.use(express.static("public"))
 app.use("/store", productsRouter);
 app.use('/store', reviewsRouter);
 // ROUTES
-app.get('/', (req,res)=>{
-    res.send('hi')
-})
+
 
 // LISTENER
 
-app.listen(process.env.PORT || 3030, () => {
+app.listen(process.env.PORT, () => {
     console.log(`The server is listening on port: ${PORT}`)
 })
