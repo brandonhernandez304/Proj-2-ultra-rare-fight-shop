@@ -4,41 +4,8 @@ const methodOverride = require("method-override");
 require("dotenv").config();
 const app = express();
 const productsRouter = require("./controllers/products.js");
-const reviewsRouter = require("./controllers/reviews.js")
-const LoremIpsum = require('lorem-ipsum').LoremIpsum
+const reviewsRouter = require("./controllers/reviews.js"
 const mongoose = require("mongoose");
-// LOREM IPSUM
-const bodyLorem = new LoremIpsum({
-    sentencesPerParagraph: {
-        max: 8,
-        min: 4
-    },
-    wordsPerSentence:{
-        max:16,
-        min:4
-    }
-});
-const titleLorem = new LoremIpsum({
-    sentencesPerParagraph:{
-        max:1,
-        min:1
-    },
-    wordsPerSentence:{
-        max: 10,
-        min:3
-    }
-});
-const authorLorem = new LoremIpsum({
-    sentencesPerParagraph:{
-        max:1,
-        min:1
-    },
-    wordsPerSentence:{
-        max: 2,
-        min:1
-    }
-});
-
 // DATABASE CONFIGURATION
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
