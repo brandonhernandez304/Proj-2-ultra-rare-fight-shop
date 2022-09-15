@@ -39,7 +39,7 @@ app.use("/store", productsRouter);
 app.use('/store', reviewsRouter);
 // ROUTES
 app.get('/', (req,res)=>{
-    res.render('index.ejs')
+    res.send('hi')
 })
 
 // LISTENER
