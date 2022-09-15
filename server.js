@@ -4,8 +4,18 @@ const methodOverride = require("method-override");
 require("dotenv").config();
 const app = express();
 const productsRouter = require("./controllers/products.js");
-const reviewsRouter = require("./controllers/reviews.js"
+const reviewsRouter = require("./controllers/reviews.js");
 const mongoose = require("mongoose");
+// Allow use of Heroku's port or your own local port, depending on the environment
+const PORT = process.env.PORT || 3030;
+
+//___________________
+//Database
+//___________________
+// How to connect to the database either via heroku or locally
+const MONGODB_URI = process.env.MONGODB_URI;
+mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true }
+    );
 // DATABASE CONFIGURATION
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
