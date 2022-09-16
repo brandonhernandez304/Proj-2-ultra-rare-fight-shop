@@ -61,7 +61,8 @@
 /* END GRID STUFF */
 body{
   backround: e9e9e9;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Poiret One', cursive;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .index-container {
@@ -88,7 +89,15 @@ li{
   /* border-bottom: 1px rgba(0, 0, 0, 0.639); */
   box-shadow: -45px 10px 17px rgba(0, 0, 0, 0.639);
 }
-
+.index-container img{
+  display: flex;
+  width: 40%;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+/* .index-item img{
+  width: 40%;
+} */
 .product-img img {
   width: 45%;
   border-radius: 20px;

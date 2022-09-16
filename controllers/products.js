@@ -6,7 +6,7 @@ const Product = require('../models/product')
 // SEED
 const productSeed = require('../models/productSeed');
 productsRouter.get('/productseed', (req, res) => {
-    Product.deleteMany({}, (error, allProducts) => {});
+    Product.deleteMany({}, (error, foundProducts) => {});
 
     Product.create(productSeed, (error, data) => {
         res.redirect('/store');

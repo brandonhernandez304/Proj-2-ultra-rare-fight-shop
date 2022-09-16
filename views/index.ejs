@@ -21,21 +21,21 @@
     </div>
     <div class="index-container">
                 <ul>
+                    <div id="index-product">
                     <% products.forEach(product=> { %>
                         <li>
                             <!-- making a link to specific item (id) and displaying the name -->
                             <a href="/store/<%=product._id %>">
-                               <div id="index-name">
                                    <h3> <%=product.name; %> </h3>
-                               </div>
-                               <div id="index-img">
+                               
+                              
                                    <img src=<%=product.img %> >
-                               </div>
-                            </a>
-                        </li>
-                        <% }) %>
+                                </a>
+                            </li>
+                            <% }) %>
+
                     </ul>
-            </div>
+                </div>
         
         </div>
 </body>
