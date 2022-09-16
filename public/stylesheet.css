@@ -8,22 +8,9 @@
 
 /* G E N E R A L */
 /* GRID ATTEMPT */
-/* .container {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr 0.8fr 1fr;
-  grid-template-rows: 0.5fr 1.2fr 1fr 2.9fr 0.5fr;
-  grid-auto-columns: 1fr;
-  gap: 18px 15px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "header header header header"
-    "product-img product-img product-info product-info"
-    "product-img product-img product-info product-info"
-    "product-img product-img reviews reviews"
-    "footer footer footer footer";
-}
 
-.header {
+
+/* .header {
   grid-area: header;
   padding: 5% 10% 5% 10%;
   }
@@ -69,7 +56,7 @@
 
 .footer {
   grid-area: footer;
-} */
+}  */
 
 /* END GRID STUFF */
 body{
@@ -104,7 +91,7 @@ li{
 
 .product-img img {
   width: 45%;
-  border-radius: 15px;
+  border-radius: 20px;
   box-shadow: 20px 20px 10px rgba(221, 221, 221, 0.366);
 }
 
@@ -118,7 +105,6 @@ a:link,
 a:visited {
   color: black;
   text-decoration: none;
-  
 }
 
 a:hover {
@@ -133,7 +119,6 @@ a:active {
   color: #000;
   border: 1px solid #000;
   border-radius: 2px;
-  
 }
 
 ​ .product-img {
