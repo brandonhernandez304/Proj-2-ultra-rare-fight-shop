@@ -44,6 +44,6 @@ app.get('/', (req,res)=>{
 
 // LISTENER
 
-app.listen(process.env.PORT || 3030, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`The server is listening on port: ${PORT}`)
 })
