@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
-
+const PORT = process.env.PORT
 const DATABASE_URL = process.env.DATABASE_URL;
 mongoose.connect(DATABASE_URL , { useNewUrlParser: true, useUnifiedTopology: true }
     );
